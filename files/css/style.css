@@ -3,10 +3,21 @@
     padding: 0;
 }
 
-section {
-    height: 100vh;
+html {
+    scroll-behavior: smooth;
 }
 
-section:nth-child(2) {
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+section:nth-child(even) {
     background-color: red;
 }
