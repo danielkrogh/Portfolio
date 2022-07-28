@@ -1,5 +1,5 @@
 // Inputs
-const pages = ['information', 'projekter', 'kontakt']
+const pages = ['information', 'projekter', 'erfaring', 'kontakt']
 
 
 

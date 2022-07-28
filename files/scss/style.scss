@@ -1,0 +1,72 @@
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    overflow: hidden;
+  }
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+/* NAVIGATION */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    
+    nav {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 0;
+        border-bottom: 2px solid;
+
+        a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
+        }
+
+        ul {
+            display: flex;
+            margin: 0;
+            margin-left: auto;
+            padding: 0;
+            align-items: center;
+
+            li {
+                display: flex;
+                margin: 0 0.5em;
+
+                &:last-of-type {
+                    display: flex;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+
+
+/* CONTENT */
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:nth-child(even) {
+        background-color: red;
+    }
+}
