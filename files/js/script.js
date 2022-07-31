@@ -88,21 +88,22 @@ window.addEventListener('keydown', event => {
 
 // Handle touchscreen
 var firstTouch = 0
+const content = document.querySelector('#content')
 
-window.addEventListener('touchstart', event => {
+content.addEventListener('touchstart', event => {
     event.preventDefault()
     firstTouch = event.touches[0].pageY
 }, {
     passive: false
 })
 
-window.addEventListener('touchmove', event => {event.preventDefault()}, {passive: false})
-window.addEventListener('touchmove', touchScreenScroll)
+content.addEventListener('touchend', event => {event.preventDefault()}, {passive: false})
+content.addEventListener('touchend', touchScreenScroll)
 
 async function touchScreenScroll(event) {
-    window.removeEventListener('touchmove', touchScreenScroll)
+    content.removeEventListener('touchend', touchScreenScroll)
 
-    if(event.touches[0].pageY < firstTouch) {
+    if(event.changedTouches[0].pageY < firstTouch) {
         handleScroll('down')
     } else {
         handleScroll('up')
@@ -110,5 +111,5 @@ async function touchScreenScroll(event) {
 
     await new Promise(r => setTimeout(r, 500))
 
-    window.addEventListener('touchmove', touchScreenScroll)
+    content.addEventListener('touchend', touchScreenScroll)
 }
