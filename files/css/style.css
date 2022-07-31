@@ -23,8 +23,11 @@ a {
 header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  z-index: 9999;
+  max-width: 90%;
+  margin: 0 auto;
 }
 header nav {
   display: flex;
@@ -53,6 +56,27 @@ header nav ul li:last-of-type {
   margin-right: 0;
 }
 
+@media only screen and (max-width: 768px) {
+  header nav {
+    position: relative;
+    justify-content: space-between;
+  }
+  header nav ul {
+    display: none;
+    text-align: end;
+  }
+  header nav ul.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    align-items: flex-end;
+  }
+  header nav ul li {
+    margin: 0;
+  }
+}
 /* CONTENT */
 section {
   height: 100vh;

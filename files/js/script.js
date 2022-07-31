@@ -113,3 +113,30 @@ async function touchScreenScroll(event) {
 
     content.addEventListener('touchend', touchScreenScroll)
 }
+
+
+
+// Mobile nav
+mobileNav()
+
+window.addEventListener('resize', () => {
+    mobileNav()
+})
+
+function mobileNav() {
+    const mobileNav = document.querySelector('#mobile-nav')
+
+    if (!mobileNav && window.innerWidth <= 768) {
+        let div = document.createElement('div')
+        div.id = 'mobile-nav'
+        div.innerText = 'NAV'
+
+        div.addEventListener('click', () => {
+            document.querySelector('header nav ul').classList.toggle('active')
+        })
+
+        document.querySelector('header nav').appendChild(div)
+    } else if (mobileNav && window.innerWidth > 768) {
+        mobileNav.remove()
+    }    
+}

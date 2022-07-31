@@ -25,8 +25,11 @@ a {
 header {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    z-index: 9999;
+    max-width: 90%;
+    margin: 0 auto;
     
     nav {
         display: flex;
@@ -54,6 +57,34 @@ header {
                 &:last-of-type {
                     display: flex;
                     margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        
+        nav {
+            position: relative;
+            justify-content: space-between;
+    
+            ul {
+                display: none;
+                text-align: end;
+
+                &.active {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    right: 0;
+                    top: 110%;
+                    align-items: flex-end;
+                }
+
+                li {
+                    margin: 0;
                 }
             }
         }
