@@ -1,34 +1,71 @@
 // Inputs
-const pages = ['information', 'projekter', 'erfaring', 'kontakt']
-
-
+const pages = [
+    {
+        title: 'Introduktion',
+        class: 'flex-50',
+        contentLeft: 'Til dagligt har jeg, som Developer & Tracking Specialist hos LAZZAWEB, ansvaret for at øge effektiviteten blandt LAZZAWEBs medarbejdere gennem udvikling, tracking og diverse andre tiltag.',
+        imageRight: 'https://kroghkommunikation.dk/wp-content/uploads/DKA.jpg'
+    },
+    {
+        title: 'Projekter'
+    },
+    {
+        title: 'Erfaring'
+    },
+    {
+        title: 'Kontakt'
+    }
+]
 
 // Create array of anchors
-const anchors = pages.map(page => page.toLowerCase().replaceAll('æ', 'ae').replaceAll('ø', 'oe').replaceAll('å', 'aa'))
+const anchors = pages.map(page => page.title.toLowerCase().replaceAll('æ', 'ae').replaceAll('ø', 'oe').replaceAll('å', 'aa'))
+
+
 
 // Create sections in DOM
 anchors.forEach((anchor, i) => {
-    let section = document.createElement('section')
+    const section = document.createElement('section')
     section.setAttribute('id', anchor)
-    section.innerText = pages[i]
+    const div = document.createElement('div')
 
+    if (pages[i].class == 'flex-50') {
+        section.setAttribute('class', 'flex-50')
+
+        if (pages[i].contentLeft) {
+            div.innerHTML += `<article><h1>${pages[i].title}</h1><p>${pages[i].contentLeft}</p></article>`
+        }
+
+        if (pages[i].imageRight) {
+            div.innerHTML += `<article><img src="${pages[i].imageRight}"></article>`
+        }
+        
+    } else {
+        div.innerHTML = `<h1>${pages[i].title}<h1>`
+    }
+    
+    section.insertAdjacentElement('beforeend', div)
     document.querySelector('#content').insertAdjacentElement('beforeend', section)
 })
 
 // Create navigation
+const a = document.createElement('a')
+a.setAttribute('href', `/#${anchors[0]}`)
+a.innerText = 'Hjem'
+
 let ul = document.createElement('ul')
 
 anchors.forEach((anchor, i) => {
     let li = document.createElement('li')
 
-    let a = document.createElement('a')
-    a.setAttribute('href', `/#${anchor}`)
-    a.innerText = pages[i]
+    let ulA = document.createElement('a')
+    ulA.setAttribute('href', `/#${anchor}`)
+    ulA.innerText = pages[i].title
 
-    li.insertAdjacentElement('beforeend', a)
+    li.insertAdjacentElement('beforeend', ulA)
     ul.insertAdjacentElement('beforeend', li)
 })
 
+document.querySelector('nav').insertAdjacentElement('beforeend', a)
 document.querySelector('nav').insertAdjacentElement('beforeend', ul)
 
 

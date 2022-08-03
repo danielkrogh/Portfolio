@@ -10,31 +10,43 @@ body {
   color: #00FF33;
   background-color: #282828;
 }
+body > * > * > div, body > * > * nav {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 html {
   scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 a {
   color: #00FF33;
 }
 
+img {
+  filter: grayscale(100%);
+  max-width: 100%;
+}
+
 /* NAVIGATION */
 header {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  max-width: 90%;
-  margin: 0 auto;
+  z-index: 1;
 }
 header nav {
   display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 1rem 0;
   border-bottom: 2px solid;
+  align-items: center;
 }
 header nav a {
   text-decoration: none;
@@ -54,6 +66,12 @@ header nav ul li {
 header nav ul li:last-of-type {
   display: flex;
   margin-right: 0;
+  padding: 0.375rem 0.75rem;
+  background-color: #00FF33;
+  border-radius: 3px;
+}
+header nav ul li:last-of-type a {
+  color: #000;
 }
 
 @media only screen and (max-width: 768px) {
@@ -83,10 +101,34 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  font-weight: 700;
-  text-transform: uppercase;
 }
 section:nth-child(even) {
   background-color: #565656;
+}
+section.flex-50 > div {
+  display: flex;
+}
+section.flex-50 > div > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 50%;
+}
+section.flex-50 > div > article:first-of-type {
+  padding: 0 0.5rem 0 0;
+}
+section.flex-50 > div > article:last-of-type {
+  padding: 0 0 0 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  section.flex-50 > div {
+    flex-direction: column;
+  }
+  section.flex-50 > div > article:first-of-type {
+    padding: 0 0 0.5rem 0;
+  }
+  section.flex-50 > div > article:last-of-type {
+    padding: 0.5rem 0 0 0;
+  }
 }
