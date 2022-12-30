@@ -7,13 +7,28 @@ const pages = [
         imageRight: 'https://kroghkommunikation.dk/wp-content/uploads/DKA.jpg'
     },
     {
-        title: 'Projekter'
+        title: 'Projekter',
+        class: 'project-grid',
+        grids: {
+            one: '1',
+            two: '2',
+            three: '3',
+            four: '4',
+            five: '5'
+        }
     },
     {
         title: 'Erfaring'
     },
     {
-        title: 'Kontakt'
+        title: 'Kontakt',
+        class: 'flex-50',
+        contentLeft: `
+            <a href="mailto:daniel@kroghkommunikation.dk">daniel@kroghkommunikation.dk</a><br>
+            <a href="tel:+4522505089">+45 22 50 50 89</a><br>
+            <a href="https://www.linkedin.com/in/dkroghandersen/" target="_blank">linkedin.com/in/dkroghandersen</a>
+        `,
+        contentRight: 'Du er velkommen til at send mig en e-mail, giv mig et kald eller opret forbindelse med mig.'
     }
 ]
 
@@ -32,15 +47,26 @@ anchors.forEach((anchor, i) => {
         section.setAttribute('class', 'flex-50')
 
         if (pages[i].contentLeft) {
-            div.innerHTML += `<article><h1>${pages[i].title}</h1><p>${pages[i].contentLeft}</p></article>`
+            div.innerHTML += `<article><h2>${pages[i].title}</h2><p>${pages[i].contentLeft}</p></article>`
         }
 
         if (pages[i].imageRight) {
             div.innerHTML += `<article><img src="${pages[i].imageRight}"></article>`
         }
+
+        if (pages[i].contentRight) {
+            div.innerHTML += `<article><p>${pages[i].contentRight}</p></article>`
+        }
         
+    } else if (pages[i].class == 'project-grid') {
+        div.setAttribute('class', 'project-grid')
+
+        for (grid in pages[i].grids) {
+            div.innerHTML += `<article><p>${pages[i].grids[grid]}</p></article>`
+        }
+
     } else {
-        div.innerHTML = `<h1>${pages[i].title}<h1>`
+        div.innerHTML = `<h2>${pages[i].title}</h2>`
     }
     
     section.insertAdjacentElement('beforeend', div)
@@ -48,9 +74,12 @@ anchors.forEach((anchor, i) => {
 })
 
 // Create navigation
+const h1 = document.createElement('h1')
 const a = document.createElement('a')
 a.setAttribute('href', `/#${anchors[0]}`)
-a.innerText = 'Hjem'
+a.innerText = 'Daniel Krogh Andersen'
+
+h1.insertAdjacentElement('beforeend', a)
 
 let ul = document.createElement('ul')
 
@@ -65,7 +94,7 @@ anchors.forEach((anchor, i) => {
     ul.insertAdjacentElement('beforeend', li)
 })
 
-document.querySelector('nav').insertAdjacentElement('beforeend', a)
+document.querySelector('nav').insertAdjacentElement('beforeend', h1)
 document.querySelector('nav').insertAdjacentElement('beforeend', ul)
 
 
