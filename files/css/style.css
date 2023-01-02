@@ -130,6 +130,40 @@ section.flex-50 > div > article:first-of-type {
 section.flex-50 > div > article:last-of-type {
   padding: 0 0 0 0.5rem;
 }
+section .project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: "project-one project-two project-two" "project-one project-five project-three" "project-four project-four project-three";
+  height: 75%;
+}
+section .project-grid > article {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: #444;
+  text-decoration: none;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  border: 1px solid black;
+}
+section .project-grid .grid-project-one {
+  grid-area: project-one;
+}
+section .project-grid .grid-project-two {
+  grid-area: project-two;
+}
+section .project-grid .grid-project-three {
+  grid-area: project-three;
+}
+section .project-grid .grid-project-four {
+  grid-area: project-four;
+}
+section .project-grid .grid-project-five {
+  grid-area: project-five;
+}
 
 @media only screen and (max-width: 768px) {
   section.flex-50 > div {

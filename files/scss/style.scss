@@ -164,6 +164,50 @@ section {
             }
         }
     }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:
+            "project-one project-two project-two"
+            "project-one project-five project-three"
+            "project-four project-four project-three";
+        height: 75%;
+        
+        > article {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-color: #444;
+            text-decoration: none;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            border: 1px solid black;
+        }
+
+        .grid-project-one {
+            grid-area: project-one;
+        }
+
+        .grid-project-two {
+            grid-area: project-two;
+        }
+
+        .grid-project-three {
+            grid-area: project-three;
+        }
+
+        .grid-project-four {
+            grid-area: project-four;
+        }
+
+        .grid-project-five {
+            grid-area: project-five;
+        }
+    }
 }
 
 @media only screen and (max-width: 768px) {

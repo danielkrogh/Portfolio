@@ -10,11 +10,11 @@ const pages = [
         title: 'Projekter',
         class: 'project-grid',
         grids: {
-            one: '1',
-            two: '2',
-            three: '3',
-            four: '4',
-            five: '5'
+            one: {name: 'Projekt 1', desc: 'Beskrivelse 1'},
+            two: {name: 'Projekt 2', desc: 'Beskrivelse 2'},
+            three: {name: 'Projekt 3', desc: 'Beskrivelse 3'},
+            four: {name: 'Projekt 4', desc: 'Beskrivelse 4'},
+            five: {name: 'Projekt 5', desc: 'Beskrivelse 5'}
         }
     },
     {
@@ -61,8 +61,14 @@ anchors.forEach((anchor, i) => {
     } else if (pages[i].class == 'project-grid') {
         div.setAttribute('class', 'project-grid')
 
-        for (grid in pages[i].grids) {
-            div.innerHTML += `<article><p>${pages[i].grids[grid]}</p></article>`
+        for (key in pages[i].grids) {
+            let gridObj = pages[i].grids[key]
+            
+            div.innerHTML += `
+                <article class="grid-project-${key}">
+                    <h3>${gridObj.name}</h3>
+                    <p>${gridObj.desc}</p>
+                </article>`
         }
 
     } else {
