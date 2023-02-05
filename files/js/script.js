@@ -175,7 +175,9 @@ content.addEventListener('touchend', touchScreenScroll)
 async function touchScreenScroll(event) {
     content.removeEventListener('touchend', touchScreenScroll)
 
-    if(event.changedTouches[0].pageY < firstTouch) {
+    if (event.target.tagName == 'A') { // Click on links
+        window.open(event.target.href)
+    } else if (event.changedTouches[0].pageY < firstTouch) {
         handleScroll('down')
     } else {
         handleScroll('up')
